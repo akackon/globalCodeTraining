@@ -1,4 +1,4 @@
-from flask import Flask,render_template
+from flask import Flask,render_template,url_for
 
 app = Flask(__name__)
 
@@ -24,5 +24,12 @@ def boys():
 def page():
     return render_template('basepage.html')
 
+@app.route('/htmlpage/<name>')
+def myName(name):
+    return render_template('basepage.html', to = name)
+
+@app.route('/htmlpage/forms')
+def forms():
+    return render_template('forms.html')
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0')
