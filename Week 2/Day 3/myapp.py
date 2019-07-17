@@ -1,12 +1,28 @@
-from flask import Flask
+from flask import Flask,render_template
 
 app = Flask(__name__)
 
 @app.route('/')
 def index():
-    print("Why am I typing this?")
-    print("Chris also wanted to see what was happening")
-    return 'Hello GlobalCode from Adrian'
+    return "Hello GlobalCode!!!!"
+
+@app.route('/numberofpeople')
+def people():
+    return "There are 14 people in the class today"
+
+
+
+@app.route('/numberofpeople/girls')
+def girls():
+    return ("There are 4 girls in the room today")
+
+@app.route('/numberofpeople/boys')
+def boys():
+    return ("There are 10 boys in the room today excluding our lecturers")
+
+@app.route('/htmlpage')
+def page():
+    return render_template('basepage.html')
 
 if __name__ == '__main__':
     app.run(debug=True, host='0.0.0.0')
